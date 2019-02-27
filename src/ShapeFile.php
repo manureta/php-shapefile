@@ -164,7 +164,13 @@ class ShapeFile implements \Iterator
     {
         return $this->prj;
     }
-    
+
+    public function getEPSG()
+    {
+        preg_match('/"EPSG","(([0-9])+)"]]$/',$this->getPRJ(),$epsg);
+	return $epsg[1];
+    }
+
     public function getDBFFields()
     {
         return $this->dbf_fields;
